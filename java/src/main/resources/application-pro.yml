@@ -1,0 +1,47 @@
+
+server:
+  port: 8080
+
+spring:
+  # jdbc config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://swagger-collector/collect-api?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 18800
+  # jackson config
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+
+### mybatis-plus config ###
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-value: 1 #Logical deleted value (default is 1)
+      logic-not-delete-value: 0 #Logical not deleted value (default is 0)
+  type-enums-package: com.benson.swagger.api.enums,com.benson.common.creator.entity.enums
+
+## basic-common config
+basic-common:
+  creator:
+    show: false
+  api:
+    loginName: swagger
+    password: 123456
+
+swagger:
+  enabled: false

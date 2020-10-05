@@ -1,0 +1,8 @@
+
+# project name
+spring:
+  application:
+    name: collect-api
+  # active profile
+  profiles:
+    active: @spring.profiles.active@
