@@ -17,6 +17,11 @@
 
 项目架构：`springboot`, `mybatis-plus`,`Antd pro 5`。
 
+## 仓库地址
+
+- [gitee](https://gitee.com/regan_jeff/swagger-collector)。
+- [gitlab](https://gitlab.com/basecode-group/benson/swagger-collector)。
+
 ## 页面展示
 
 - 登录页
