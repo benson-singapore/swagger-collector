@@ -17,7 +17,7 @@
 
 ## API使用文档
 
-- [gitee](https://gitee.com/regan_jeff/swagger-collector/pages)
+- [gitee](http://regan_jeff.gitee.io/swagger-collector)
 - [gitlab](https://basecode-group.gitlab.io/benson/swagger-collector/#/)
 
 项目架构：`springboot`, `mybatis-plus`,`Antd pro 5`。
