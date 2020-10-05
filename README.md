@@ -15,6 +15,10 @@
 - 无需与项目集合，只针对swagger api url进行动态管理。
 - 支持可配置的密码登录。
 
+## API使用文档
+
+- [gitlabel](https://basecode-group.gitlab.io/benson/swagger-collector/#/)
+
 项目架构：`springboot`, `mybatis-plus`,`Antd pro 5`。
 
 ## 页面展示
