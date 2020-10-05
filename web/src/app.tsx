@@ -14,35 +14,21 @@ export async function getInitialState(): Promise<{
   settings?: LayoutSettings;
   isLogin?: boolean;
 }> {
-  // 如果是登录页面，不执行
-  if (history.location.pathname !== '/user/login') {
-    try {
-      // 判断是否登录
-      const loginData = await loginVerify();
-
-      if (loginData.result) {
-        const currentUser = await queryCurrent();
-        let user = currentUser.result;
-        return {
-          currentUser: user,
-          settings: defaultSettings,
-          isLogin: true,
-        };
-      } else {
-        history.push('/user/login');
-      }
-    } catch (error) {
-      history.push('/user/login');
-    }
-  }
+  const currentUser = await queryCurrent();
+  let user = currentUser.result;
+  return {
+    currentUser: user,
+    settings: defaultSettings,
+    isLogin: true,
+  };
   return {
     settings: defaultSettings,
   };
 }
 
 export const layout = ({
-  initialState,
-}: {
+                         initialState,
+                       }: {
   initialState: {
     settings?: LayoutSettings;
     currentUser?: API.CurrentUser;
@@ -54,6 +40,19 @@ export const layout = ({
     disableContentMargin: false,
     footerRender: () => <Footer />,
     onPageChange: () => {
+      // 如果是登录页面，不执行
+      if (history.location.pathname !== '/user/login') {
+        try {
+          // 判断是否登录
+          loginVerify().then((res) => {
+            if (!res.result) {
+              history.push('/user/login');
+            }
+          });
+        } catch (error) {
+          history.push('/user/login');
+        }
+      }
       // 如果没有登录，重定向到 login
       if (!initialState.isLogin && history.location.pathname !== '/user/login') {
         // if (!initialState?.currentUser?.userid && history.location.pathname !== '/user/login') {
